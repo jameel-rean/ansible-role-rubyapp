@@ -1,0 +1,33 @@
+--- 
+# - name: check rbenv
+#   shell: test -d {{ home }}/.rbenv && echo "yes" || echo "no"
+#   register: rbenv_installed
+
+# - include: rbenv.yml
+#   when: rbenv_installed.stdout != "yes"
+
+# - name: check ruby version
+#   shell: test -d {{ home }}/.rbenv/versions/{{ ruby_version }} && echo "yes" || echo "no"
+#   register: installed_ruby_version
+
+# - include: ruby.yml
+#   when: installed_ruby_version.stdout != "yes"
+
+# - name: install bundler gem
+#   shell: "{{ home }}/.rbenv/bin/rbenv exec gem install bundler"
+#   notify: rbenv rehash
+
+- stat: path=/etc/profile.d/rvm.sh
+  register: rvm_folder
+
+- name: install rvm
+  shell: "gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 && curl -sSL https://get.rvm.io | bash -s stable --ruby={{ruby_version}}"
+  when: rvm_folder.stat.isdir is not defined
+
+
+- name: Create ruby environment for app
+  shell: "/usr/local/rvm/bin/rvm use {{ruby_version}}@{{app_name}} --create"
+- name: Create ruby environment for app
+  shell: "/usr/local/rvm/bin/rvm ruby-{{ruby_version}} do rvm gemset create {{app_name}}"
+# - name: install rake
+#   shell: "/usr/local/rvm/bin/rvm ruby-{{ruby_version}}@{{app_name}} do bundle install"

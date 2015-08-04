@@ -1,0 +1,21 @@
+---
+
+- name: Install python-apt (for the Ansible apt module)
+  command: apt-get --assume-yes install python-apt
+
+- name: Install deb pkg
+  apt: pkg={{ item }} state=latest update_cache=yes
+  with_items:
+    - build-essential
+    - libssl-dev
+    - libreadline-gplv2-dev
+    - libxml2
+    - libxml2-dev
+    - libxslt1-dev
+    - tklib
+    - zlib1g-dev
+    - curl
+    - git
+    - libsqlite3-dev
+    - libmysqlclient-dev
+    - nodejs

@@ -1,0 +1,9 @@
+---
+- name: git clone application
+  git: repo={{ git_url }}
+       dest={{ home }}/{{ app_name }}
+       version={{ git_branch }}
+- name: create shared directory
+  shell: mkdir -p {{ home }}/{{ app_name }}_shared
+- name: create shared socket directory
+  shell: mkdir -p {{ home }}/{{ app_name }}_shared/sockets

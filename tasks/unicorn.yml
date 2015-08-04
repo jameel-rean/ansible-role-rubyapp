@@ -1,0 +1,9 @@
+---
+- name: install unicorn
+  shell: "/usr/local/rvm/bin/rvm ruby-{{ruby_version}}@{{app_name}} do gem install unicorn"
+
+- name: Generate Unicorn config
+  template: src=unicorn_rb.j2 dest={{ home }}/{{ app_name }}/config/unicorn.rb
+- name: Generate Unicorn init script
+  template: src=unicorn_init.j2 dest=/etc/init.d/unicorn_{{ app_name }} mode=0755
+  notify: start unicorn

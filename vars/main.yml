@@ -1,0 +1,20 @@
+---
+### Application
+app_name: "demo"
+git_url: "https://github.com/jameel-rean/sample-ror.git"
+git_branch: "master"
+
+### System
+user: "ubuntu"
+user_password: "12345"
+user_shell: "/bin/bash"
+home: "/home/ubuntu"
+ruby_version: "2.1.2"
+
+### Config files
+nginx_listen_address: "0.0.0.0"
+nginx_listen_port: "80"
+
+unicorn_workers: "2"
+##app
+app_env: production

@@ -1,0 +1,7 @@
+---
+- include: common.yml
+#- include: postgresql.yml
+- include: rubytask.yml
+- include: webapp.yml
+- include: unicorn.yml
+- include: nginx.yml

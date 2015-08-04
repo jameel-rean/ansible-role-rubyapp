@@ -1,0 +1,8 @@
+---
+- name: Install Nginx
+  apt: pkg=nginx-full state=latest update_cache=yes
+
+- name: Generate Nginx config
+  template: src=nginx_conf.j2 dest=/etc/nginx/sites-available/default
+  notify:
+    - restart nginx

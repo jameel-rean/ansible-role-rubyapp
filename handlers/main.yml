@@ -1,0 +1,8 @@
+---
+
+- name: restart nginx
+  action: service name=nginx state=reloaded enabled=yes
+- name: restart postgresql
+  action: service name=postgresql state=reloaded enabled=yes
+- name: start unicorn
+  action: service name=unicorn_{{ app_name }} state=running enabled=yes 
