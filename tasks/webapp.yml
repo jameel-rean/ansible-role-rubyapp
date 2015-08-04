@@ -7,3 +7,7 @@
   shell: mkdir -p {{ home }}/{{ app_name }}_shared
 - name: create shared socket directory
   shell: mkdir -p {{ home }}/{{ app_name }}_shared/sockets
+- name: create shared log directory
+  shell: mkdir -p {{ home }}/{{ app_name }}_shared/log
+- name: create shared pids directory
+  shell: mkdir -p {{ home }}/{{ app_name }}_shared/pids
