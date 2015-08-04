@@ -25,7 +25,7 @@ ENV="{{app_env}}"
 # environment settings
 PATH="/usr/local/rvm/bin/:$PATH"
 
-CMD="rvm use {{ruby_version}}@{{app_name}} --create && cd $APP_ROOT && bundle exec unicorn -c config/unicorn.rb -E $ENV -D"
+CMD="rvm use {{ruby_version}}@{{app_name}} --create && cd $APP_ROOT && bundle install && bundle exec unicorn -c config/unicorn.rb -E $ENV -D"
 PID="$SHARE_PATH/pids/unicorn.pid"
 OLD_PID="$PID.oldbin"
 #startcmd="su - $USER -c $CMD"
