@@ -11,3 +11,5 @@
   shell: mkdir -p {{ home }}/{{ app_name }}_shared/log
 - name: create shared pids directory
   shell: mkdir -p {{ home }}/{{ app_name }}_shared/pids
+- name: create Gemfile.lock
+  file: path={{ home }}/{{ app_name }}/Gemfile.lock state=touch owner={{user}} group={{user}} mode=0644
