@@ -4,12 +4,12 @@
        dest={{ home }}/{{ app_name }}
        version={{ git_branch }}
 - name: create shared directory
-  shell: mkdir -p {{ home }}/{{ app_name }}_shared
+  file: path={{ home }}/{{ app_name }}_shared state=directory owner={{user}} group={{user}} mode=0775
 - name: create shared socket directory
-  shell: mkdir -p {{ home }}/{{ app_name }}_shared/sockets
+  file: path={{ home }}/{{ app_name }}_shared/sockets state=directory owner={{user}} group={{user}} mode=0775
 - name: create shared log directory
-  shell: mkdir -p {{ home }}/{{ app_name }}_shared/log
+  file: path={{ home }}/{{ app_name }}_shared/log state=directory owner={{user}} group={{user}} mode=0775
 - name: create shared pids directory
-  shell: mkdir -p {{ home }}/{{ app_name }}_shared/pids
+  file: path={{ home }}/{{ app_name }}_shared/pids state=directory owner={{user}} group={{user}} mode=0775
 - name: create Gemfile.lock
   file: path={{ home }}/{{ app_name }}/Gemfile.lock state=touch owner={{user}} group={{user}} mode=0644
