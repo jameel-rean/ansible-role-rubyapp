@@ -1,0 +1,10 @@
+---
+galaxy_info:
+  author: "Jameel"
+  company: Ellucian
+  min_ansible_version: 1.8
+  name: ROR
+  categories:
+   - system
+dependencies: []
+version: 0.3.2
